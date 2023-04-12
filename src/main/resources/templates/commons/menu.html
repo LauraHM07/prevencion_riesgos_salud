@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+    <div th:fragment="menu">
+        <!-- MENU PRINCIPAL -->
+        <nav class="navbar navbar-expand-lg bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Menú</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" th:href="@{/}" href="index.html">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/doctores/list}" href="#">Doctores</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/empresas/list}" href="#">Empresas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/revisiones/list}" href="#">Revisiones</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/trabajadores/list}" href="#">Trabajadores</a>
+                        </li>
+                    </ul>
+
+                    <!-- <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                &#127760;
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" th:href="@{/welcome?lang_config=es}" href="#">Español</a>
+                                <a class="dropdown-item" th:href="@{/welcome?lang_config=en}" href="#">Inglés</a>
+                            </div>
+                        </li>
+                    </ul> -->
+
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- <a class="btn btn-danger" href="index.html" th:href="@{/logout}">
+                <i class="bi bi-box-arrow-in-left" th:text="logout"></i></i>
+            </a> -->
+        </nav>
+    </div>
+</body>
+
+</html>
