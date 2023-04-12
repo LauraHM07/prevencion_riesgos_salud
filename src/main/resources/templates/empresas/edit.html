@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="commons/header :: header" />
+
+<body>
+    <div th:replace="commons/menu :: menu" />
+
+    <div class="container">
+        <main>
+            <div class="row g-5">
+                <div class="col-8">
+                    <h4 class="mb-3">Datos Empresa</h4>
+
+                    <form class="needs-validation" method="post" th:action="@{/empresas/update}" novalidate>
+                        <input type="hidden" name="codigo" th:value="${empresa.codigo}">
+
+                        <div class="row g-4">
+                            <div class="col-sm-6">
+                                <div class="col-sm-6">
+                                    <label for="nombre" class="form-label">Nombre</label>
+    
+                                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="" th:value="${empresa.nombre}" value="" required>
+                                    
+                                    <div class="invalid-feedback">
+                                        Nombre requerido.
+                                    </div>
+                                </div>
+    
+                                <div class="col-sm-6">
+                                    <label for="email" class="form-label">Email</label>
+                                    
+                                    <input type="text" class="form-control" id="email" name="email" placeholder="" th:value="${empresa.email}" value="" required>
+                                    
+                                    <div class="invalid-feedback">
+                                        Email requerido.
+                                    </div>
+                                </div>
+    
+                                <div class="col-sm-6">
+                                    <label for="telefono" class="form-label">Teléfono</label>
+                                    
+                                    <input type="text" class="form-control" id="telefono" name="telefono" placeholder="" th:value="${empresa.telefono}" value="" required>
+                                    
+                                    <div class="invalid-feedback">
+                                        Teléfono requerido.
+                                    </div>
+                                </div>
+    
+                                <div class="col-sm-6">
+                                    <label for="direccion" class="form-label">Dirección</label>
+                                    
+                                    <input type="text" class="form-control" id="direccion" name="direccion" placeholder="" th:value="${empresa.direccion}" value="" required>
+                                    
+                                    <div class="invalid-feedback">
+                                        Dirección requerido.
+                                    </div>
+                                </div>
+
+                                <hr class="my-4">
+
+                                <div class="col-sm-12">
+                                    <div class="btn-group">
+                                        <button class="btn btn-primary" type="submit">Actualizar</button>
+                                        <a class="btn btn-danger" th:href="@{/empresas/list}" href="#" role="button">Cancelar</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+
+    </div>
+
+    <div th:replace="commons/footer :: footer" class="container"></div>
+
+</body>
+
+</html>
