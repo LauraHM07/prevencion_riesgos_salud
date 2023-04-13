@@ -1,8 +1,13 @@
 package com.prevencion.prevencion.model;
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Empresa {
@@ -14,6 +19,10 @@ public class Empresa {
     private String email;
     private String telefono;
     private String direccion;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "empresa_codigo")
+    private List<Trabajador> trabajadores;
     
     public Empresa() {
     }
@@ -68,6 +77,14 @@ public class Empresa {
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
+    }
+
+    public List<Trabajador> getTrabajadores() {
+        return trabajadores;
+    }
+
+    public void setTrabajadores(List<Trabajador> trabajadores) {
+        this.trabajadores = trabajadores;
     }
 
     @Override

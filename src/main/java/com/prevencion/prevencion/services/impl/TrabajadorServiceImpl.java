@@ -1,5 +1,6 @@
 package com.prevencion.prevencion.services.impl;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,12 @@ public class TrabajadorServiceImpl implements TrabajadorService {
     public Page<Trabajador> findAll(Pageable page) {
         return repository.findAll(page);
     }
+
+    @Override
+    public List<Trabajador> findAll() {
+        return repository.findAll();
+    }
+
 
     @Override
     public Trabajador findById(int codigo) {

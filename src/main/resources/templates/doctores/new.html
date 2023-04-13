@@ -12,9 +12,7 @@
                 <div class="col-8">
                     <h4 class="mb-3">Datos Vendedor</h4>
 
-                    <form class="needs-validation" method="post" th:action="@{/doctores/update}" novalidate>
-                        <input type="hidden" name="codigo" th:value="${doctor.codigo}">
-
+                    <form class="needs-validation" method="post" th:action="@{/doctores/save}" novalidate>
                         <div class="row g-4">
                             <div class="col-sm-6">
                                 <label for="nombre" class="form-label">Nombre</label>

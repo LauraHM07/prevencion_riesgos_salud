@@ -20,7 +20,7 @@
                                 <label for="nombre" class="form-label">Nombre</label>
 
                                 <input type="text" class="form-control" id="nombre" name="nombre" placeholder="" th:value="${doctor.nombre}" value="" required>
-                                
+
                                 <div class="invalid-feedback">
                                     Nombre requerido.
                                 </div>
@@ -38,7 +38,7 @@
 
                             <div class="col-sm-6">
                                 <label for="email" class="form-label">Email</label>
-                                
+
                                 <input type="text" class="form-control" id="email" name="email" placeholder="" th:value="${doctor.email}" value="" required>
                                 
                                 <div class="invalid-feedback">
@@ -48,7 +48,7 @@
 
                             <div class="col-sm-6">
                                 <label for="telefono" class="form-label">Teléfono</label>
-                                
+
                                 <input type="text" class="form-control" id="telefono" name="telefono" placeholder="" th:value="${doctor.telefono}" value="" required>
                                 
                                 <div class="invalid-feedback">
@@ -58,7 +58,7 @@
 
                             <div class="col-sm-6">
                                 <label for="direccion" class="form-label">Dirección</label>
-                                
+
                                 <input type="text" class="form-control" id="direccion" name="direccion" placeholder="" th:value="${doctor.direccion}" value="" required>
                                 
                                 <div class="invalid-feedback">
@@ -68,28 +68,27 @@
 
                             <div class="col-sm-6">
                                 <label for="dni" class="form-label">DNI</label>
-                                
+
                                 <input type="text" class="form-control" id="dni" name="dni" placeholder="" th:value="${doctor.dni}" value="" required>
                                 
                                 <div class="invalid-feedback">
                                     DNI requerido.
                                 </div>
                             </div>
+                        </div>
 
-                            <hr class="my-4">
+                        <hr class="my-4">
 
-                            <div class="col-sm-12">
-                                <div class="btn-group">
-                                    <button class="btn btn-primary" type="submit">Actualizar</button>
-                                    <a class="btn btn-danger" th:href="@{/doctores/list}" href="#" role="button">Cancelar</a>
-                                </div>
+                        <div class="col-sm-12">
+                            <div class="btn-group">
+                                <button class="btn btn-primary" type="submit">Actualizar</button>
+                                <a class="btn btn-danger" th:href="@{/doctores/list}" href="#" role="button">Cancelar</a>
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
         </main>
-
     </div>
 
     <div th:replace="commons/footer :: footer" class="container"></div>
