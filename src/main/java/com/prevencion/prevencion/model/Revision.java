@@ -2,17 +2,26 @@ package com.prevencion.prevencion.model;
 
 import java.util.List;
 
+import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.MapsId;
 
 @Entity
 public class Revision {
-    
-    @Id
-    @GeneratedValue
-    private int codigo;
 
+    @EmbeddedId
+    private RevisionId id = new RevisionId();
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @MapsId("doctor_codigo")
+    private Doctor doctor;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @MapsId("trabajador_codigo")
+    private Trabajador trabajador;
+    
     private String fecha;
     private List<String> pruebas;
     private String descripcion;
@@ -20,22 +29,28 @@ public class Revision {
     public Revision() {
     }
 
-    public Revision(int codigo) {
-        this.codigo = codigo;
+    public RevisionId getId() {
+        return id;
     }
 
-    public Revision(int codigo, String fecha, String descripcion) {
-        this.codigo = codigo;
-        this.fecha = fecha;
-        this.descripcion = descripcion;
+    public void setId(RevisionId id) {
+        this.id = id;
     }
 
-    public int getCodigo() {
-        return codigo;
+    public Doctor getDoctor() {
+        return doctor;
     }
 
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
+    }
+
+    public Trabajador getTrabajador() {
+        return trabajador;
+    }
+
+    public void setTrabajador(Trabajador trabajador) {
+        this.trabajador = trabajador;
     }
 
     public String getFecha() {
@@ -60,27 +75,5 @@ public class Revision {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
-    }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + codigo;
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        Revision other = (Revision) obj;
-        if (codigo != other.codigo)
-            return false;
-        return true;
     }
 }
