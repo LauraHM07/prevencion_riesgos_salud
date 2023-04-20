@@ -11,9 +11,7 @@ public interface RevisionService {
 
     public Revision findById(int codigo);
 
-    public void insert(Revision revision);
-
-    public void update(Revision revision);
+    public void save(Revision revision);
 
     public void delete(int codigo);
 }

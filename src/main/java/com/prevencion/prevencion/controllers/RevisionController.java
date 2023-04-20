@@ -12,12 +12,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.prevencion.prevencion.model.Revision;
 import com.prevencion.prevencion.services.RevisionService;
+
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/revisiones")
@@ -64,15 +65,6 @@ public class RevisionController {
         return modelAndView;
     }
 
-    @GetMapping(path = { "/create" })
-    public ModelAndView create(Revision revision) {
-
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("revision", new Revision());
-        modelAndView.setViewName("revisiones/new");
-        return modelAndView;
-    }
-
     @GetMapping(path = { "/edit/{codigo}" })
     public ModelAndView edit(
             @PathVariable(name = "codigo", required = true) int codigo) {
@@ -85,31 +77,25 @@ public class RevisionController {
         return modelAndView;
     }
 
-    @PostMapping(path = { "/save" })
-    public ModelAndView save(Revision revision) {
+    @GetMapping(path = { "/save" })
+    public ModelAndView save(HttpSession session) {
 
-        revisionService.insert(revision);
+        Revision revision = (Revision) session.getAttribute("revision");
 
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("redirect:edit/" + revision.getCodigo());
-        return modelAndView;
-    }
+        revisionService.save(revision);
 
-    @PostMapping(path = { "/update" })
-    public ModelAndView update(Revision revision) {
-
-        revisionService.update(revision);
+        session.removeAttribute("revision");
 
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("redirect:edit/" + revision.getCodigo());
+        modelAndView.setViewName("redirect:list");
+
         return modelAndView;
     }
 
     @GetMapping(path = { "/delete/{codigo}" })
-    public ModelAndView delete(
-            @PathVariable(name = "codigo", required = true) int codigo) {
+    public ModelAndView delete(@PathVariable(name = "codigo", required = true) int codigo) {
 
-                revisionService.delete(codigo);
+        revisionService.delete(codigo);
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("redirect:/revisiones/list");

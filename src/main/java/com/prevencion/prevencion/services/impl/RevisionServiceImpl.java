@@ -34,12 +34,7 @@ public class RevisionServiceImpl implements RevisionService {
     }
 
     @Override
-    public void insert(Revision revision){
-        repository.save(revision);
-    }
-
-    @Override
-    public void update(Revision revision) {
+    public void save(Revision revision) {
         repository.save(revision);
     }
 
