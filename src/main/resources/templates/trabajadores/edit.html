@@ -14,6 +14,7 @@
 
                     <form class="needs-validation" method="post" th:action="@{/trabajadores/update}" novalidate>
                         <input type="hidden" name="codigo" th:value="${trabajador.codigo}">
+                        <input type="hidden" name="empresa_codigo" th:value="${empresa.codigo}">
 
                         <div class="row g-4">
                             <div class="col-sm-6">

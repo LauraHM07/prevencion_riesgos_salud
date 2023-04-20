@@ -3,7 +3,7 @@ package com.prevencion.prevencion.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import jakarta.persistence.Transient;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Trabajador {
@@ -19,8 +19,8 @@ public class Trabajador {
     private String telefono;
     private String direccion;
 
-    @Transient
-    private boolean empresa;
+    @ManyToOne
+    private Empresa empresa;
 
     public Trabajador() {
     }
@@ -96,14 +96,14 @@ public class Trabajador {
         this.direccion = direccion;
     }
 
-    public boolean perteneceEmpresa() {
+    public Empresa getEmpresa() {
         return empresa;
     }
 
-    public void setEmpresa(boolean empresa) {
+    public void setEmpresa(Empresa empresa) {
         this.empresa = empresa;
     }
-    
+
     @Override
     public int hashCode() {
         final int prime = 31;

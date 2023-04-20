@@ -14,6 +14,8 @@
 
                     <form class="needs-validation" method="post" th:action="@{/trabajadores/save}" novalidate>
                         <div class="row g-4">
+                            <input type="hidden" name="empresa_codigo" th:value="${empresa.codigo}">
+                            
                             <div class="col-sm-6">
                                 <label for="nombre" class="form-label">Nombre</label>
 

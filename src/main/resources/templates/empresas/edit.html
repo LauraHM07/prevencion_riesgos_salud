@@ -56,16 +56,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-sm-6">
-                                <label for="trabajadores" class="form-label">Trabajadores</label>
-    
-                                <ul class="list-group">
-                                    <li class="list-group-item" th:each="trabajador : ${trabajadores}">
-                                            <input class="form-check-input me-1" type="checkbox" name="trabajador" th:value="${trabajador.codigo}" id="firstCheckbox" th:checked="${trabajador.perteneceEmpresa} ? 'true' : 'false'">
-                                            <label class="form-check-label" for="firstCheckbox" name="trabajador" th:text="|${trabajador.nombre} ${trabajador.apellidos}|"></label>
-                                    </li>
-                                </ul>
-                            </div>
+                            <div th:replace="commons/trabajadores :: trabajadores"></div>
                         </div>
 
                         <hr class="my-4">

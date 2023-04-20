@@ -13,12 +13,6 @@
         </div>
 
         <div class="row">
-            <div class="col-lg-3">
-                <a th:href="@{/trabajadores/create}" class="btn btn-primary btn-sm mb-3">Nuevo trabajador</a>
-            </div>
-        </div>
-
-        <div class="row">
             <table class="table table-striped table-hover">
                 <caption>Lista de trabajadores</caption>
 
@@ -45,7 +39,7 @@
                         <td th:text="${trabajador.direccion}">Mark</td>
                         <td th:text="${trabajador.dni}">Mark</td>
                         <td>
-                            <a class="btn btn-primary" th:href="@{/trabajadores/edit/}+${trabajador.codigo}" href="#"
+                            <a class="btn btn-primary" th:href="@{/trabajadores/edit/${trabajador.codigo}/${empresa.codigo}}" href="#"
                                 role="button"><i class="bi bi-pencil-square"></i></a>
                             <a class="btn btn-danger" th:href="@{/trabajadores/delete/}+${trabajador.codigo}" href="#"
                                 role="button"><i class="bi bi-trash"></i></a>
