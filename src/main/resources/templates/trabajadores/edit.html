@@ -8,8 +8,8 @@
 
     <div class="container">
         <main>
-            <div class="row g-5">
-                <div class="col-8">
+            <div class="row">
+                <div class="col">
                     <h4 class="mb-3">Datos Trabajador</h4>
 
                     <form class="needs-validation" method="post" th:action="@{/trabajadores/update}" novalidate>
@@ -84,6 +84,9 @@
                             <div class="btn-group">
                                 <button class="btn btn-primary" type="submit">Actualizar</button>
                                 <a class="btn btn-danger" th:href="@{/trabajadores/list}" href="#" role="button">Cancelar</a>
+                                
+                                <!-- <a class="btn btn-danger" th:if="${empresa.codigo}" th:href="@{/empresas/edit/}+${empresa.codigo}" href="#" role="button">Volver a la empresa</a>
+                                <a class="btn btn-danger" th:unless="${empresa.codigo}" th:href="@{/trabajadores/list}" href="#" role="button">Volver al listado</a> -->
                             </div>
                         </div>
                     </form>

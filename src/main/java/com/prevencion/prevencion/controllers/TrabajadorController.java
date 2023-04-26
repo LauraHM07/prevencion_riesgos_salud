@@ -84,7 +84,7 @@ public class TrabajadorController {
 
     @GetMapping(path = { "/edit/{codigo}/{empresa_codigo}" })
     public ModelAndView edit(
-            @PathVariable(name = "codigo", required = true) int codigo, @PathVariable(name = "empresa_codigo", required = true) int empresa_codigo) {
+            @PathVariable(name = "codigo", required = true) int codigo, @PathVariable(name = "empresa_codigo", required = false) int empresa_codigo) {
 
         Trabajador trabajador = trabajadorService.findById(codigo);
         Empresa empresa = empresaService.findById(empresa_codigo);
@@ -112,12 +112,15 @@ public class TrabajadorController {
     }
 
     @PostMapping(path = { "/update" })
-    public ModelAndView update(Trabajador trabajador, Empresa empresa) {
+    public ModelAndView update(Trabajador trabajador, @RequestParam(name = "empresa_codigo") int codigo) {
+
+        Empresa empresa = empresaService.findById(codigo);
+        trabajador.setEmpresa(empresa);
 
         trabajadorService.update(trabajador);
 
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("redirect:edit/" + trabajador.getCodigo() + "/" + empresa.getCodigo());
+        modelAndView.setViewName("redirect:../empresas/edit/" + codigo);
         return modelAndView;
     }
 
