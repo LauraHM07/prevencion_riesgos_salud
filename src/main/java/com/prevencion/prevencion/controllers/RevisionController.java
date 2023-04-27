@@ -34,7 +34,7 @@ public class RevisionController {
     public ModelAndView list(Model model) {
 
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("redirect:list/1/codigo/asc");
+        modelAndView.setViewName("redirect:list/1/id/asc");
 
         return modelAndView;
     }
@@ -65,11 +65,11 @@ public class RevisionController {
         return modelAndView;
     }
 
-    @GetMapping(path = { "/edit/{codigo}" })
+    @GetMapping(path = { "/edit/{id}" })
     public ModelAndView edit(
-            @PathVariable(name = "codigo", required = true) int codigo) {
+            @PathVariable(name = "id", required = true) int id) {
 
-        Revision revision = revisionService.findById(codigo);
+        Revision revision = revisionService.findById(id);
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("revision", revision);
@@ -92,10 +92,10 @@ public class RevisionController {
         return modelAndView;
     }
 
-    @GetMapping(path = { "/delete/{codigo}" })
-    public ModelAndView delete(@PathVariable(name = "codigo", required = true) int codigo) {
+    @GetMapping(path = { "/delete/{id}" })
+    public ModelAndView delete(@PathVariable(name = "id", required = true) int id) {
 
-        revisionService.delete(codigo);
+        revisionService.delete(id);
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("redirect:/revisiones/list");

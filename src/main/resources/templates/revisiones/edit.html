@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="commons/header :: header" />
+
+<body>
+    <div th:replace="commons/menu :: menu" />
+
+    <div class="container">
+        <main>
+            <div class="row d-flex justify-content-center">
+                <div class="col-sm-9">
+                    <h4 class="mb-3">Datos Revisión</h4>
+
+                    <form class="needs-validation" method="post" th:action="@{/revisiones/update}" novalidate>
+                        <input type="hidden" name="id" th:value="${revision.id}">
+
+                        <div class="row g-2">
+                            <div class="col-sm-6">
+                                <label for="fecha" class="form-label">Fecha</label>
+
+                                <input type="text" class="form-control" id="fecha" name="fecha" placeholder=""
+                                    th:value="${revision.fecha}" value="" required>
+
+                                <div class="invalid-feedback">
+                                    Fecha requerida.
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <label for="lastName" class="form-label">Descripción</label>
+
+                                <input type="text" class="form-control" id="descripcion" name="descripcion"
+                                    placeholder="" th:value="${revision.descripcion}" value="" required>
+
+                                <div class="invalid-feedback">
+                                    Descripción requerida.
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <label for="lastName" class="form-label">Pruebas</label>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="">
+                                    <label class="form-check-label">Peso y altura</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="">
+                                    <label class="form-check-label">Tensión</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="">
+                                    <label class="form-check-label">Audiometría</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="">
+                                    <label class="form-check-label">Electrocardiograma</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="">
+                                    <label class="form-check-label">Control visión</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="">
+                                    <label class="form-check-label">Valoración neurológica</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="">
+                                    <label class="form-check-label">Análisis de sangre y orina</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="my-4">
+
+                        <div class="col-sm-12">
+                            <div class="btn-group">
+                                <button class="btn btn-primary" type="submit">Actualizar</button>
+                                <a class="btn btn-danger" th:href="@{/revisiones/list}" href="#" role="button">Cancelar</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div th:replace="commons/footer :: footer" class="container"></div>
+
+</body>
+
+</html>

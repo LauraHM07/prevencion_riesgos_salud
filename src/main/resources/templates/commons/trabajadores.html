@@ -37,7 +37,7 @@
                             <td th:text="${trabajador.direccion}">Mark</td>
                             <td th:text="${trabajador.dni}">Mark</td>
                             <td>
-                                <a class="btn btn-primary" th:href="@{/trabajadores/edit/{codigo}/{empresa}(codigo=${trabajador.codigo},empresa=${empresa.codigo})}" href="#"
+                                <a class="btn btn-primary" th:href="@{/trabajadores/edit/{codigo}/{empresa_codigo}?volver=empresa(codigo=${trabajador.codigo},empresa_codigo=${empresa.codigo})}" href="#"
                                     role="button"><i class="bi bi-pencil-square"></i></a>
                                 <a class="btn btn-danger" th:href="@{/trabajadores/delete/}+${trabajador.codigo}" href="#"
                                     role="button"><i class="bi bi-trash"></i></a>

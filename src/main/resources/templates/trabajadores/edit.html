@@ -8,15 +8,15 @@
 
     <div class="container">
         <main>
-            <div class="row">
-                <div class="col">
+            <div class="row d-flex justify-content-center">
+                <div class="col-sm-9">
                     <h4 class="mb-3">Datos Trabajador</h4>
 
                     <form class="needs-validation" method="post" th:action="@{/trabajadores/update}" novalidate>
                         <input type="hidden" name="codigo" th:value="${trabajador.codigo}">
                         <input type="hidden" name="empresa_codigo" th:value="${empresa.codigo}">
 
-                        <div class="row g-4">
+                        <div class="row g-2">
                             <div class="col-sm-6">
                                 <label for="nombre" class="form-label">Nombre</label>
 
@@ -83,10 +83,9 @@
                         <div class="col-sm-12">
                             <div class="btn-group">
                                 <button class="btn btn-primary" type="submit">Actualizar</button>
-                                <a class="btn btn-danger" th:href="@{/trabajadores/list}" href="#" role="button">Cancelar</a>
                                 
-                                <!-- <a class="btn btn-danger" th:if="${empresa.codigo}" th:href="@{/empresas/edit/}+${empresa.codigo}" href="#" role="button">Volver a la empresa</a>
-                                <a class="btn btn-danger" th:unless="${empresa.codigo}" th:href="@{/trabajadores/list}" href="#" role="button">Volver al listado</a> -->
+                                <a class="btn btn-danger" th:if="${volver eq 'empresa'}" th:href="@{/empresas/edit/}+${empresa.codigo}" href="#" role="button">Volver a la empresa</a>
+                                <a class="btn btn-danger" th:unless="${volver eq 'empresa'}" th:href="@{/trabajadores/list}" href="#" role="button">Volver al listado</a>
                             </div>
                         </div>
                     </form>

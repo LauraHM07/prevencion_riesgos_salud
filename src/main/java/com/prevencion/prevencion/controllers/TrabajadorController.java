@@ -82,18 +82,28 @@ public class TrabajadorController {
         return modelAndView;
     }
 
-    @GetMapping(path = { "/edit/{codigo}/{empresa_codigo}" })
+    @GetMapping(path = { "/edit/{codigo}/{empresa_codigo}", "/edit/{codigo}" })
     public ModelAndView edit(
-            @PathVariable(name = "codigo", required = true) int codigo, @PathVariable(name = "empresa_codigo", required = false) int empresa_codigo) {
+            @PathVariable(name = "codigo", required = true) int codigo, 
+            @PathVariable(name = "empresa_codigo", required = false) Integer empresa_codigo, 
+            @RequestParam(required = false) String volver
+            ) {
 
         Trabajador trabajador = trabajadorService.findById(codigo);
-        Empresa empresa = empresaService.findById(empresa_codigo);
+        Empresa empresa = null;
+
+        if(empresa_codigo != null) {
+            empresa = empresaService.findById(empresa_codigo);
+        } else {
+            empresa = trabajador.getEmpresa();
+        }
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("trabajador", trabajador);
         modelAndView.addObject("empresa", empresa);
-
+        modelAndView.addObject("volver", volver);
         modelAndView.setViewName("trabajadores/edit");
+
         return modelAndView;
     }
 

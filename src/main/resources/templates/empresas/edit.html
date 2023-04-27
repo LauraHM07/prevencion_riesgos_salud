@@ -8,8 +8,8 @@
 
     <div class="container">
         <main>
-            <div class="row">
-                <div class="col">
+            <div class="row d-flex justify-content-center">
+                <div class="col-sm-9">
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item" role="presentation">
                             <button class="nav-link active" id="home-tab" data-bs-toggle="tab"
@@ -30,7 +30,7 @@
                             <form class="needs-validation" method="post" th:action="@{/empresas/update}" novalidate>
                                 <input type="hidden" name="codigo" th:value="${empresa.codigo}">
 
-                                <div class="row g-4">
+                                <div class="row g-2">
                                     <div class="col-sm-6">
                                         <label for="nombre" class="form-label">Nombre</label>
 
