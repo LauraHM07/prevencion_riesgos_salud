@@ -1,7 +1,5 @@
 package com.prevencion.prevencion.model;
 
-import java.util.List;
-
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -23,8 +21,15 @@ public class Revision {
     private Trabajador trabajador;
     
     private String fecha;
-    private List<String> pruebas;
     private String descripcion;
+
+    private Boolean tension;
+    private Boolean pesoAltura;
+    private Boolean audiometria;
+    private Boolean controlVision;
+    private Boolean electrocardiograma;
+    private Boolean valoracionNeurologica;
+    private Boolean analisisSangreOrina;
     
     public Revision() {
     }
@@ -61,19 +66,67 @@ public class Revision {
         this.fecha = fecha;
     }
 
-    public List<String> getPruebas() {
-        return pruebas;
-    }
-
-    public void setPruebas(List<String> pruebas) {
-        this.pruebas = pruebas;
-    }
-
     public String getDescripcion() {
         return descripcion;
     }
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public Boolean getTension() {
+        return tension;
+    }
+
+    public void setTension(Boolean tension) {
+        this.tension = tension;
+    }
+
+    public Boolean getPesoAltura() {
+        return pesoAltura;
+    }
+
+    public void setPesoAltura(Boolean pesoAltura) {
+        this.pesoAltura = pesoAltura;
+    }
+
+    public Boolean getAudiometria() {
+        return audiometria;
+    }
+
+    public void setAudiometria(Boolean audiometria) {
+        this.audiometria = audiometria;
+    }
+
+    public Boolean getControlVision() {
+        return controlVision;
+    }
+
+    public void setControlVision(Boolean controlVision) {
+        this.controlVision = controlVision;
+    }
+
+    public Boolean getElectrocardiograma() {
+        return electrocardiograma;
+    }
+
+    public void setElectrocardiograma(Boolean electrocardiograma) {
+        this.electrocardiograma = electrocardiograma;
+    }
+
+    public Boolean getValoracionNeurologica() {
+        return valoracionNeurologica;
+    }
+
+    public void setValoracionNeurologica(Boolean valoracionNeurologica) {
+        this.valoracionNeurologica = valoracionNeurologica;
+    }
+
+    public Boolean getAnalisisSangreOrina() {
+        return analisisSangreOrina;
+    }
+
+    public void setAnalisisSangreOrina(Boolean analisisSangreOrina) {
+        this.analisisSangreOrina = analisisSangreOrina;
     }
 }

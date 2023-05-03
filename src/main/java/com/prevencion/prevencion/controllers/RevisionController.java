@@ -13,10 +13,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.prevencion.prevencion.model.Doctor;
 import com.prevencion.prevencion.model.Revision;
+import com.prevencion.prevencion.model.Trabajador;
+import com.prevencion.prevencion.services.DoctorService;
 import com.prevencion.prevencion.services.RevisionService;
+import com.prevencion.prevencion.services.TrabajadorService;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -26,6 +31,12 @@ public class RevisionController {
 
     @Autowired
     RevisionService revisionService;
+
+    @Autowired
+    TrabajadorService trabajadorService;
+
+    @Autowired
+    DoctorService doctorService;
 
     @Value("${pagination.size}")
     int sizePage;
@@ -62,6 +73,22 @@ public class RevisionController {
         modelAndView.addObject("fieldSort", fieldSort);
         modelAndView.addObject("directionSort", directionSort.equals("asc") ? "asc" : "desc");
 
+        return modelAndView;
+    }
+
+    @GetMapping(path = { "/create/{trabajador_codigo}" })
+    public ModelAndView create(Revision revision, 
+            @PathVariable(name = "trabajador_codigo", required = true) int trabajador_codigo
+            ) {
+
+        Trabajador trabajador = trabajadorService.findById(trabajador_codigo);
+        List<Doctor> doctores = doctorService.findAll();
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("revision", new Revision());
+        modelAndView.addObject("trabajador", trabajador);
+        modelAndView.addObject("doctores", doctores);
+        modelAndView.setViewName("revisiones/new");
         return modelAndView;
     }
 

@@ -13,24 +13,76 @@
                     <h4 class="mb-3">Datos Revisión</h4>
 
                     <form class="needs-validation" method="post" th:action="@{/revisiones/save}" novalidate>
+                        <input type="hidden" name="trabajador" th:value="${trabajador.codigo}">
+
                         <div class="row g-2">
                             <div class="col-sm-6">
-                                <label for="fecha" class="form-label">Fecha</label>
+                                <div class="col-sm-10">
+                                    <label for="fecha" class="form-label">Fecha</label>
 
-                                <input type="text" class="form-control" id="fecha" name="fecha" placeholder="" th:value="${revision.fecha}" value="" required>
+                                    <input type="text" class="form-control" id="fecha" name="fecha" placeholder=""
+                                        th:value="${revision.fecha}" value="" required>
 
-                                <div class="invalid-feedback">
-                                    Fecha requerida.
+                                    <div class="invalid-feedback">
+                                        Fecha requerida.
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-10">
+                                    <label for="lastName" class="form-label">Descripción</label>
+
+                                    <textarea class="form-control" id="descripcion" name="descripcion" placeholder=""
+                                        th:value="${revision.descripcion}" value="" rows="2" required></textarea>
+
+                                    <div class="invalid-feedback">
+                                        Descripción requerida.
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-10">
+                                    <label for="lastName" class="form-label">Doctor</label>
+
+                                    <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="doctor" name="doctor">
+                                        <option selected>Elige un doctor</option>
+                                        <option th:each="doctor : ${doctores}" th:value="${doctor.codigo}" th:text="|${doctor.nombre} ${doctor.apellidos}|">Doctor Name</option>
+                                    </select>
+
+                                    <div class="invalid-feedback">
+                                        Doctor requerido.
+                                    </div>
                                 </div>
                             </div>
 
-                            <div class="col-sm-6">
-                                <label for="lastName" class="form-label">Descripción</label>
+                            <div class="col-sm-3">
+                                <label for="lastName" class="form-label">Pruebas</label>
 
-                                <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="" th:value="${revision.descripcion}" value="" required>
-                                
-                                <div class="invalid-feedback">
-                                    Descripción requerida.
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="">
+                                    <label class="form-check-label">Tensión</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="">
+                                    <label class="form-check-label">Peso y altura</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="">
+                                    <label class="form-check-label">Audiometría</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="">
+                                    <label class="form-check-label">Control visión</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="">
+                                    <label class="form-check-label">Electrocardiograma</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="">
+                                    <label class="form-check-label">Análisis sangre y orina</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="">
+                                    <label class="form-check-label">Valoración neurológica</label>
                                 </div>
                             </div>
                         </div>
@@ -40,7 +92,8 @@
                         <div class="col-sm-12">
                             <div class="btn-group">
                                 <button class="btn btn-success" type="submit">Crear</button>
-                                <a class="btn btn-danger" th:href="@{/revisiones/list}" href="#" role="button">Cancelar</a>
+                                <a class="btn btn-danger" th:href="@{/revisiones/list}" href="#"
+                                    role="button">Cancelar</a>
                             </div>
                         </div>
                     </form>

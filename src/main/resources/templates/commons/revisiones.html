@@ -5,8 +5,12 @@
     <div th:fragment="revisiones">
         <div class="container">
             <div class="row">
+                <h3>Revisiones</h3>
+            </div>
+
+            <div class="row">
                 <div class="col-lg-3">
-                    <a th:href="@{/revisiones/create/}+${revision.codigo}" class="btn btn-primary btn-sm mb-3">Nueva revision</a>
+                    <a th:href="@{/revisiones/create/}+${trabajador.codigo}" class="btn btn-primary btn-sm mb-3">Pasar revisión</a>
                 </div>
             </div>
     
@@ -27,14 +31,13 @@
                             <th th:text="${revision.fecha}" scope="row">1</th>
                             <td th:text="${revision.descripcion}">Mark</td>
                             <td>
-                                <a class="btn btn-primary" th:href="@{/revisiones/edit/}+${revision.codigo}" href="#"
+                                <a class="btn btn-primary" th:href="@{/revisiones/edit/}+${revision.id}" href="#"
                                     role="button"><i class="bi bi-pencil-square"></i></a>
-                                <a class="btn btn-danger" th:href="@{/revisiones/delete/}+${revision.codigo}" href="#"
+                                <a class="btn btn-danger" th:href="@{/revisiones/delete/}+${revision.id}" href="#"
                                     role="button"><i class="bi bi-trash"></i></a>
                             </td>
                         </tr>
                     </tbody>
-    
                 </table>
             </div>
         </div>
