@@ -10,7 +10,7 @@ import com.prevencion.prevencion.model.Trabajador;
 public interface TrabajadorService {
     
     public Page<Trabajador> findAll(Pageable pageable);
-
+    public Page<Trabajador> findByDni(String dni, Pageable pageable);
     public List<Trabajador> findAll();
 
     public Trabajador findById(int codigo);

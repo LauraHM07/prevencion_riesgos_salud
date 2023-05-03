@@ -36,9 +36,12 @@ public class TrabajadorController {
     int sizePage;
 
     @GetMapping(value = "/list")
-    public ModelAndView list(Model model) {
+    public ModelAndView list(Model model, @RequestParam(required = false) String dni) {
 
         ModelAndView modelAndView = new ModelAndView();
+
+        modelAndView.addObject("dni", dni);
+
         modelAndView.setViewName("redirect:list/1/codigo/asc");
 
         return modelAndView;
@@ -48,12 +51,20 @@ public class TrabajadorController {
     public ModelAndView listPage(Model model,
             @PathVariable("numPage") Integer numPage,
             @PathVariable("fieldSort") String fieldSort,
-            @PathVariable("directionSort") String directionSort) {
+            @PathVariable("directionSort") String directionSort,
+            @RequestParam(required = false) String dni
+            ) {
 
         Pageable pageable = PageRequest.of(numPage - 1, sizePage,
                 directionSort.equals("asc") ? Sort.by(fieldSort).ascending() : Sort.by(fieldSort).descending());
 
-        Page<Trabajador> page = trabajadorService.findAll(pageable);
+        Page<Trabajador> page = null;
+
+        if(dni == null || dni.isEmpty()){
+            page = trabajadorService.findAll(pageable);
+        } else {
+            page = trabajadorService.findByDni(dni, pageable);
+        }
 
         List<Trabajador> trabajadores = page.getContent();
 
@@ -71,7 +82,9 @@ public class TrabajadorController {
     }
 
     @GetMapping(path = { "/create/{empresa_codigo}" })
-    public ModelAndView create(Trabajador trabajador, @PathVariable(name = "empresa_codigo", required = true) int empresa_codigo) {
+    public ModelAndView create(Trabajador trabajador, 
+            @PathVariable(name = "empresa_codigo", required = true) int empresa_codigo
+            ) {
 
         Empresa empresa = empresaService.findById(empresa_codigo);
 

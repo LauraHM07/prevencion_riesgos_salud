@@ -24,6 +24,11 @@ public class TrabajadorServiceImpl implements TrabajadorService {
     }
 
     @Override
+    public Page<Trabajador> findByDni(String dni, Pageable page) {
+        return repository.findByDniContaining(dni, page);
+    }
+
+    @Override
     public List<Trabajador> findAll() {
         return repository.findAll();
     }
