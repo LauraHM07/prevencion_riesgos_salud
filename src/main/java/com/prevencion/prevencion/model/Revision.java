@@ -12,6 +12,8 @@ public class Revision {
     @EmbeddedId
     private RevisionId id = new RevisionId();
 
+    private int codigo;
+
     @ManyToOne(fetch = FetchType.LAZY, optional = true)
     @MapsId("doctor_codigo")
     private Doctor doctor;

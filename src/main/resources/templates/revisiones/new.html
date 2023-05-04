@@ -42,7 +42,7 @@
                                 <div class="col-sm-10">
                                     <label for="lastName" class="form-label">Doctor</label>
 
-                                    <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="doctor" name="doctor">
+                                    <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="doctor" name="doctor_codigo">
                                         <option selected>Elige un doctor</option>
                                         <option th:each="doctor : ${doctores}" th:value="${doctor.codigo}" th:text="|${doctor.nombre} ${doctor.apellidos}|">Doctor Name</option>
                                     </select>

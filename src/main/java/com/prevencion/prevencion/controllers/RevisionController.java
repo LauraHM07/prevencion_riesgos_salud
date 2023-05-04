@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -22,8 +23,6 @@ import com.prevencion.prevencion.model.Trabajador;
 import com.prevencion.prevencion.services.DoctorService;
 import com.prevencion.prevencion.services.RevisionService;
 import com.prevencion.prevencion.services.TrabajadorService;
-
-import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/revisiones")
@@ -104,18 +103,34 @@ public class RevisionController {
         return modelAndView;
     }
 
-    @GetMapping(path = { "/save" })
-    public ModelAndView save(HttpSession session) {
+    @PostMapping(path = { "/save" })
+    public ModelAndView save(Revision revision, 
+            @RequestParam(name = "trabajador") int trabajador_codigo,
+            @RequestParam(name = "doctor_codigo") int doctor_codigo
+    ) {
 
-        Revision revision = (Revision) session.getAttribute("revision");
+        Trabajador trabajador = new Trabajador();
+        trabajador.setCodigo(trabajador_codigo);
 
-        revisionService.save(revision);
+        Doctor doctor = new Doctor();
+        doctor.setCodigo(doctor_codigo);
 
-        session.removeAttribute("revision");
+        revision.setTrabajador(trabajador);
+        revision.setDoctor(doctor);
+        revisionService.insert(revision);
 
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("redirect:list");
+        modelAndView.setViewName("redirect:edit/" + revision.getId());
+        return modelAndView;
+    }
 
+    @PostMapping(path = { "/update" })
+    public ModelAndView update(Revision revision) {
+
+        revisionService.update(revision);
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("redirect:edit/" + revision.getId());
         return modelAndView;
     }
 
