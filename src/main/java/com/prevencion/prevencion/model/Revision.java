@@ -18,11 +18,11 @@ public class Revision {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codigo;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "doctor_codigo")
     private Doctor doctor;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name =  "trabajador_codigo")
     private Trabajador trabajador;
     

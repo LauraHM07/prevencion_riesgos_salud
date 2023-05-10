@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.prevencion.prevencion.model.Empresa;
+import com.prevencion.prevencion.model.Revision;
 import com.prevencion.prevencion.model.Trabajador;
 import com.prevencion.prevencion.services.EmpresaService;
 import com.prevencion.prevencion.services.TrabajadorService;
@@ -103,6 +104,7 @@ public class TrabajadorController {
             ) {
 
         Trabajador trabajador = trabajadorService.findById(codigo);
+        List<Revision> revisiones = trabajador.getRevisiones();
         Empresa empresa = null;
 
         if(empresa_codigo != null) {
@@ -113,6 +115,7 @@ public class TrabajadorController {
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("trabajador", trabajador);
+        modelAndView.addObject("revisiones", revisiones);
         modelAndView.addObject("empresa", empresa);
         modelAndView.addObject("volver", volver);
         modelAndView.setViewName("trabajadores/edit");
