@@ -4,14 +4,15 @@ import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Doctor {
     
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codigo;
 
     private String dni;
@@ -20,6 +21,9 @@ public class Doctor {
     private String email;
     private String telefono;
     private String direccion;
+
+    @OneToMany(mappedBy = "doctor")
+    private List<Revision> revisiones;
 
     public Doctor() {
     }
@@ -93,6 +97,14 @@ public class Doctor {
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
+    }
+
+    public List<Revision> getRevisiones() {
+        return revisiones;
+    }
+
+    public void setRevisiones(List<Revision> revisiones) {
+        this.revisiones = revisiones;
     }
 
     @Override

@@ -44,7 +44,7 @@ public class RevisionController {
     public ModelAndView list(Model model) {
 
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("redirect:list/1/id/asc");
+        modelAndView.setViewName("redirect:list/1/codigo/asc");
 
         return modelAndView;
     }
@@ -91,11 +91,11 @@ public class RevisionController {
         return modelAndView;
     }
 
-    @GetMapping(path = { "/edit/{id}" })
+    @GetMapping(path = { "/edit/{codigo}" })
     public ModelAndView edit(
-            @PathVariable(name = "id", required = true) int id) {
+            @PathVariable(name = "codigo", required = true) int codigo) {
 
-        Revision revision = revisionService.findById(id);
+        Revision revision = revisionService.findById(codigo);
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("revision", revision);
@@ -111,16 +111,18 @@ public class RevisionController {
 
         Trabajador trabajador = new Trabajador();
         trabajador.setCodigo(trabajador_codigo);
+        //trabajador.setNombre("trabajadorNombre");
 
         Doctor doctor = new Doctor();
         doctor.setCodigo(doctor_codigo);
+        //doctor.setNombre("doctorNombre");
 
         revision.setTrabajador(trabajador);
         revision.setDoctor(doctor);
         revisionService.insert(revision);
 
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("redirect:edit/" + revision.getId());
+        modelAndView.setViewName("redirect:edit/" + revision.getCodigo());
         return modelAndView;
     }
 
@@ -130,14 +132,14 @@ public class RevisionController {
         revisionService.update(revision);
 
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("redirect:edit/" + revision.getId());
+        modelAndView.setViewName("redirect:edit/" + revision.getCodigo());
         return modelAndView;
     }
 
-    @GetMapping(path = { "/delete/{id}" })
-    public ModelAndView delete(@PathVariable(name = "id", required = true) int id) {
+    @GetMapping(path = { "/delete/{codigo}" })
+    public ModelAndView delete(@PathVariable(name = "codigo", required = true) int codigo) {
 
-        revisionService.delete(id);
+        revisionService.delete(codigo);
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("redirect:/revisiones/list");

@@ -1,25 +1,29 @@
 package com.prevencion.prevencion.model;
 
-import jakarta.persistence.EmbeddedId;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.MapsId;
 
 @Entity
 public class Revision {
 
-    @EmbeddedId
-    private RevisionId id = new RevisionId();
+    // @EmbeddedId
+    // private RevisionId id = new RevisionId();
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codigo;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = true)
-    @MapsId("doctor_codigo")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "doctor_codigo")
     private Doctor doctor;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = true)
-    @MapsId("trabajador_codigo")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name =  "trabajador_codigo")
     private Trabajador trabajador;
     
     private String fecha;
@@ -36,12 +40,20 @@ public class Revision {
     public Revision() {
     }
 
-    public RevisionId getId() {
-        return id;
+    // public RevisionId getId() {
+    //     return id;
+    // }
+
+    // public void setId(RevisionId id) {
+    //     this.id = id;
+    // }
+
+    public int getCodigo() {
+        return codigo;
     }
 
-    public void setId(RevisionId id) {
-        this.id = id;
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
     }
 
     public Doctor getDoctor() {

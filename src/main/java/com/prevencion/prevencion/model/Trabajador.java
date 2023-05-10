@@ -1,15 +1,19 @@
 package com.prevencion.prevencion.model;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Trabajador {
     
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codigo;
 
     private String dni;
@@ -18,6 +22,9 @@ public class Trabajador {
     private String email;
     private String telefono;
     private String direccion;
+
+    @OneToMany(mappedBy = "trabajador")
+    private List<Revision> revisiones;
 
     @ManyToOne
     private Empresa empresa;
@@ -102,6 +109,14 @@ public class Trabajador {
 
     public void setEmpresa(Empresa empresa) {
         this.empresa = empresa;
+    }
+
+    public List<Revision> getRevisiones() {
+        return revisiones;
+    }
+
+    public void setRevisiones(List<Revision> revisiones) {
+        this.revisiones = revisiones;
     }
 
     @Override
