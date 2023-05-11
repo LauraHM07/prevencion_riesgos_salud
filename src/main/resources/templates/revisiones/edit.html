@@ -17,6 +17,17 @@
 
                         <div class="row g-2">
                             <div class="col-sm-6">
+                                <label for="lastName" class="form-label">Descripción</label>
+
+                                <textarea class="form-control" id="descripcion" name="descripcion" placeholder="" 
+                                    th:field="${revision.descripcion}" value="" rows="2" required></textarea>
+
+                                <div class="invalid-feedback">
+                                    Descripción requerida.
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
                                 <label for="fecha" class="form-label">Fecha</label>
 
                                 <input type="text" class="form-control" id="fecha" name="fecha" placeholder=""
@@ -24,17 +35,6 @@
 
                                 <div class="invalid-feedback">
                                     Fecha requerida.
-                                </div>
-                            </div>
-
-                            <div class="col-sm-6">
-                                <label for="lastName" class="form-label">Descripción</label>
-
-                                <input type="text" class="form-control" id="descripcion" name="descripcion"
-                                    placeholder="" th:value="${revision.descripcion}" value="" required>
-
-                                <div class="invalid-feedback">
-                                    Descripción requerida.
                                 </div>
                             </div>
 

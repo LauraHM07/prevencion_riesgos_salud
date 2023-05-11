@@ -42,9 +42,11 @@
                                 <div class="col-sm-10">
                                     <label for="lastName" class="form-label">Doctor</label>
 
-                                    <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="doctor" name="doctor_codigo">
+                                    <select class="form-select form-select-sm" aria-label=".form-select-sm example"
+                                        id="doctor" name="doctor_codigo">
                                         <option selected>Elige un doctor</option>
-                                        <option th:each="doctor : ${doctores}" th:value="${doctor.codigo}" th:text="|${doctor.nombre} ${doctor.apellidos}|">Doctor Name</option>
+                                        <option th:each="doctor : ${doctores}" th:value="${doctor.codigo}"
+                                            th:text="|${doctor.nombre} ${doctor.apellidos}|">Doctor Name</option>
                                     </select>
 
                                     <div class="invalid-feedback">
@@ -57,34 +59,42 @@
                                 <label for="lastName" class="form-label">Pruebas</label>
 
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="">
+                                    <input class="form-check-input" type="checkbox" name="tension"
+                                        th:checked="${revision.tension}">
                                     <label class="form-check-label">Tensión</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="">
+                                    <input class="form-check-input" type="checkbox" name="pesoAltura"
+                                        th:checked="${revision.pesoAltura}">
                                     <label class="form-check-label">Peso y altura</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="">
+                                    <input class="form-check-input" type="checkbox" name="audiometria"
+                                        th:checked="${revision.audiometria}">
                                     <label class="form-check-label">Audiometría</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="">
+                                    <input class="form-check-input" type="checkbox" name="controlVision"
+                                        th:checked="${revision.controlVision}">
                                     <label class="form-check-label">Control visión</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="">
+                                    <input class="form-check-input" type="checkbox" name="electrocardiograma"
+                                        th:checked="${revision.electrocardiograma}">
                                     <label class="form-check-label">Electrocardiograma</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="">
+                                    <input class="form-check-input" type="checkbox" name="analisisSangreOrina"
+                                        th:checked="${revision.analisisSangreOrina}">
                                     <label class="form-check-label">Análisis sangre y orina</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="">
+                                    <input class="form-check-input" type="checkbox" name="valoracionNeurologica"
+                                        th:checked="${revision.valoracionNeurologica}">
                                     <label class="form-check-label">Valoración neurológica</label>
                                 </div>
                             </div>
+
                         </div>
 
                         <hr class="my-4">

@@ -76,9 +76,9 @@ public class RevisionController {
     }
 
     @GetMapping(path = { "/create/{trabajador_codigo}" })
-    public ModelAndView create(Revision revision, 
+    public ModelAndView create(
             @PathVariable(name = "trabajador_codigo", required = true) int trabajador_codigo
-            ) {
+    ) {
 
         Trabajador trabajador = trabajadorService.findById(trabajador_codigo);
         List<Doctor> doctores = doctorService.findAll();
@@ -111,14 +111,13 @@ public class RevisionController {
 
         Trabajador trabajador = new Trabajador();
         trabajador.setCodigo(trabajador_codigo);
-        //trabajador.setNombre("trabajadorNombre");
 
         Doctor doctor = new Doctor();
         doctor.setCodigo(doctor_codigo);
-        //doctor.setNombre("doctorNombre");
 
         revision.setTrabajador(trabajador);
         revision.setDoctor(doctor);
+        
         revisionService.insert(revision);
 
         ModelAndView modelAndView = new ModelAndView();
