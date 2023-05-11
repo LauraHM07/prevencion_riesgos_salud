@@ -14,12 +14,13 @@
 
                     <form class="needs-validation" method="post" th:action="@{/revisiones/update}" novalidate>
                         <input type="hidden" name="codigo" th:value="${revision.codigo}">
+                        <input type="hidden" name="trabajador_codigo" th:value="${trabajador.codigo}">
 
                         <div class="row g-2">
                             <div class="col-sm-6">
                                 <label for="lastName" class="form-label">Descripción</label>
 
-                                <textarea class="form-control" id="descripcion" name="descripcion" placeholder="" 
+                                <textarea class="form-control" id="descripcion" name="descripcion" placeholder=""
                                     th:field="${revision.descripcion}" value="" rows="2" required></textarea>
 
                                 <div class="invalid-feedback">
@@ -38,36 +39,43 @@
                                 </div>
                             </div>
 
-                            <div class="col-sm-6">
+                            <div class="col-sm-3">
                                 <label for="lastName" class="form-label">Pruebas</label>
 
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="">
-                                    <label class="form-check-label">Peso y altura</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="">
+                                    <input class="form-check-input" type="checkbox" name="tension"
+                                        th:checked="${revision.tension}">
                                     <label class="form-check-label">Tensión</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="">
+                                    <input class="form-check-input" type="checkbox" name="pesoAltura"
+                                        th:checked="${revision.pesoAltura}">
+                                    <label class="form-check-label">Peso y altura</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="audiometria"
+                                        th:checked="${revision.audiometria}">
                                     <label class="form-check-label">Audiometría</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="">
-                                    <label class="form-check-label">Electrocardiograma</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="">
+                                    <input class="form-check-input" type="checkbox" name="controlVision"
+                                        th:checked="${revision.controlVision}">
                                     <label class="form-check-label">Control visión</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="">
-                                    <label class="form-check-label">Valoración neurológica</label>
+                                    <input class="form-check-input" type="checkbox" name="electrocardiograma"
+                                        th:checked="${revision.electrocardiograma}">
+                                    <label class="form-check-label">Electrocardiograma</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="">
-                                    <label class="form-check-label">Análisis de sangre y orina</label>
+                                    <input class="form-check-input" type="checkbox" name="analisisSangreOrina"
+                                        th:checked="${revision.analisisSangreOrina}">
+                                    <label class="form-check-label">Análisis sangre y orina</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="valoracionNeurologica"
+                                        th:checked="${revision.valoracionNeurologica}">
+                                    <label class="form-check-label">Valoración neurológica</label>
                                 </div>
                             </div>
                         </div>
@@ -77,7 +85,9 @@
                         <div class="col-sm-12">
                             <div class="btn-group">
                                 <button class="btn btn-primary" type="submit">Actualizar</button>
-                                <a class="btn btn-danger" th:href="@{/revisiones/list}" href="#" role="button">Cancelar</a>
+
+                                <a class="btn btn-danger" th:if="${volver eq 'trabajador'}" th:href="@{/trabajadores/edit/}+${trabajador.codigo}" href="#" role="button">Volver al trabajador</a>
+                                <a class="btn btn-danger" th:unless="${volver eq 'trabajador'}" th:href="@{/revisiones/list}" href="#" role="button">Volver al listado</a>
                             </div>
                         </div>
                     </form>

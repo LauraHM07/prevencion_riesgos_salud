@@ -31,7 +31,7 @@
                             <th th:text="${revision.fecha}" scope="row">1</th>
                             <td th:text="${revision.descripcion}">Mark</td>
                             <td>
-                                <a class="btn btn-primary" th:href="@{/revisiones/edit/}+${revision.codigo}" href="#"
+                                <a class="btn btn-primary" th:href="@{/revisiones/edit/{param1}?volver=trabajador&trabajador_codigo={param2}(param1=${revision.codigo},param2=${trabajador.codigo})}" href="#"
                                     role="button"><i class="bi bi-pencil-square"></i></a>
                                 <a class="btn btn-danger" th:href="@{/revisiones/delete/}+${revision.codigo}" href="#"
                                     role="button"><i class="bi bi-trash"></i></a>

@@ -9,7 +9,7 @@
     <div class="container">
         <main>
             <div class="row d-flex justify-content-center">
-                <div class="col-sm-9">
+                <div class="col-sm-10">
                     <h4 class="mb-3">Datos Doctor</h4>
 
                     <form class="needs-validation" method="post" th:action="@{/doctores/save}" novalidate>
@@ -35,12 +35,12 @@
                             </div>
 
                             <div class="col-sm-6">
-                                <label for="email" class="form-label">Email</label>
+                                <label for="dni" class="form-label">DNI</label>
 
-                                <input type="text" class="form-control" id="email" name="email" placeholder="" th:value="${doctor.email}" value="" required>
+                                <input type="text" class="form-control" id="dni" name="dni" placeholder="" th:value="${doctor.dni}" value="" required>
                                 
                                 <div class="invalid-feedback">
-                                    Email requerido.
+                                    DNI requerido.
                                 </div>
                             </div>
 
@@ -65,12 +65,12 @@
                             </div>
 
                             <div class="col-sm-6">
-                                <label for="dni" class="form-label">DNI</label>
+                                <label for="email" class="form-label">Email</label>
 
-                                <input type="text" class="form-control" id="dni" name="dni" placeholder="" th:value="${doctor.dni}" value="" required>
+                                <input type="text" class="form-control" id="email" name="email" placeholder="" th:value="${doctor.email}" value="" required>
                                 
                                 <div class="invalid-feedback">
-                                    DNI requerido.
+                                    Email requerido.
                                 </div>
                             </div>
                         </div>

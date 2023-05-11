@@ -124,7 +124,9 @@ public class TrabajadorController {
     }
 
     @PostMapping(path = { "/save" })
-    public ModelAndView save(Trabajador trabajador, @RequestParam(name = "empresa_codigo") int codigo) {
+    public ModelAndView save(Trabajador trabajador, 
+        @RequestParam(name = "empresa_codigo") int codigo
+    ) {
 
         Empresa empresa = new Empresa();
         empresa.setCodigo(codigo);

@@ -9,7 +9,7 @@
     <div class="container">
         <main>
             <div class="row d-flex justify-content-center">
-                <div class="col-sm-9">
+                <div class="col-sm-10">
                     <h4 class="mb-3">Datos Revisión</h4>
 
                     <form class="needs-validation" method="post" th:action="@{/revisiones/save}" novalidate>
@@ -102,8 +102,7 @@
                         <div class="col-sm-12">
                             <div class="btn-group">
                                 <button class="btn btn-success" type="submit">Crear</button>
-                                <a class="btn btn-danger" th:href="@{/revisiones/list}" href="#"
-                                    role="button">Cancelar</a>
+                                <a class="btn btn-danger" th:href="@{/trabajadores/edit/}+${trabajador.codigo}" href="#" role="button">Cancelar</a>
                             </div>
                         </div>
                     </form>

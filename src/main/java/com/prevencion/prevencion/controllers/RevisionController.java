@@ -77,7 +77,8 @@ public class RevisionController {
 
     @GetMapping(path = { "/create/{trabajador_codigo}" })
     public ModelAndView create(
-            @PathVariable(name = "trabajador_codigo", required = true) int trabajador_codigo
+            @PathVariable(name = "trabajador_codigo", required = true) int trabajador_codigo,
+            @RequestParam(required = false) String volver
     ) {
 
         Trabajador trabajador = trabajadorService.findById(trabajador_codigo);
@@ -87,18 +88,30 @@ public class RevisionController {
         modelAndView.addObject("revision", new Revision());
         modelAndView.addObject("trabajador", trabajador);
         modelAndView.addObject("doctores", doctores);
+        modelAndView.addObject("volver", volver);
         modelAndView.setViewName("revisiones/new");
         return modelAndView;
     }
 
     @GetMapping(path = { "/edit/{codigo}" })
     public ModelAndView edit(
-            @PathVariable(name = "codigo", required = true) int codigo) {
+            @PathVariable(name = "codigo", required = true) int codigo,
+            @RequestParam(name = "trabajador_codigo", required = false) Integer trabajador_codigo,
+            @RequestParam(required = false) String volver
+    ) {
 
         Revision revision = revisionService.findById(codigo);
 
+        Trabajador trabajador = new Trabajador();
+        
+        if(trabajador_codigo != null){
+            trabajador.setCodigo(trabajador_codigo);
+        }
+
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("revision", revision);
+        modelAndView.addObject("trabajador", trabajador);
+        modelAndView.addObject("volver", volver);
         modelAndView.setViewName("revisiones/edit");
         return modelAndView;
     }
