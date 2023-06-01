@@ -44,7 +44,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Override
     public void update(Usuario usuario) {
-        restTemplate.put(urlSeguridad + "usuarios/" + usuario.getCodigo(), usuario);
+        restTemplate.put(urlSeguridad + "usuarios/" + usuario.getCodigo(), usuario, Usuario.class);
     }
 
     @Override

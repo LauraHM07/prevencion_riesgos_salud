@@ -15,21 +15,37 @@
                     <form method="post" th:action="@{/usuarios/update}">
                         <input type="hidden" name="codigo" th:value="${usuario.codigo}">
 
-                       <div class="row g-2">
+                        <div class="row g-2">
                             <div class="col-sm-6">
                                 <label for="nombre" class="form-label">Nombre</label>
-                                <input type="nombre" class="form-control" id="nombre" name="nombre" th:value="${usuario.nombre}">
-                            </div>
-
-
-                            <div class="col-sm-6">
-                                <label for="password" class="form-label">Contraseña</label>
-                                <input type="password" class="form-control" id="password" name="password" th:value="${usuario.password}">
+                                <input type="nombre" class="form-control" id="nombre" name="nombre"
+                                    th:value="${usuario.nombre}">
                             </div>
 
                             <div class="col-sm-6">
                                 <label for="email" class="form-label">Email</label>
-                                <input type="text" class="form-control" id="email" name="email" th:value="${usuario.email}">
+                                <input type="text" class="form-control" id="email" name="email"
+                                    th:value="${usuario.email}">
+                            </div>
+
+                            <div class="col-sm-6">
+                                <label for="password" class="form-label">Contraseña</label>
+                                <input type="password" class="form-control" id="password" name="password"
+                                    th:value="${usuario.password}">
+                            </div>
+
+                            <div class="col-sm-6"></div>
+
+                            <div class="col-sm-6">
+                                <label for="permisos">Permisos</label>
+
+                                <div th:each="permiso : ${permisos}">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" th:name="permisosSeleccionados" th:value="${permiso.codigo}"
+                                            th:checked="${usuario.permissions != null and usuario.permissions.contains(permiso)}"/>
+                                        <label class="form-check-label" th:text="${permiso.nombre}"></label>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 

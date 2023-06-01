@@ -8,7 +8,7 @@ public class Usuario {
     private String nombre;
     private String password;
     private String email;
-    private List<Permiso> permisos;
+    private List<Permiso> permissions;
     
     public Usuario() {
     }
@@ -17,12 +17,12 @@ public class Usuario {
         this.codigo = codigo;
     }
 
-    public Usuario(int codigo, String nombre, String password, String email, List<Permiso> permisos) {
+    public Usuario(int codigo, String nombre, String password, String email, List<Permiso> permissions) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.password = password;
         this.email = email;
-        this.permisos = permisos;
+        this.permissions = permissions;
     }
 
     public int getCodigo() {
@@ -57,12 +57,12 @@ public class Usuario {
         this.email = email;
     }
 
-    public List<Permiso> getPermisos() {
-        return permisos;
+    public List<Permiso> getPermissions() {
+        return permissions;
     }
 
-    public void setPermisos(List<Permiso> permisos) {
-        this.permisos = permisos;
+    public void setPermissions(List<Permiso> permissions) {
+        this.permissions = permissions;
     }
 
     @Override
