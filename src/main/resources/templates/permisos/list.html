@@ -8,11 +8,14 @@
 
     <div class="container">
 
-        <div class="row">
-            <h3>Permisos</h3>
+        <div class="row align-items-center">
+            <div class="col-lg-9 d-flex align-items-center">
+                <h3 style="margin-right: 10px;">Permisos</h3>
+                <div class="d-flex align-items-center flex-column">
+                    <a th:href="@{/permisos/create}" class="btn btn-primary btn-sm">Nuevo permiso</a>
+                </div>
+            </div>
         </div>
-
-        <a th:href="@{/permisos/create}" href="new.html" class="btn btn-primary">Crear</a>
 
         <div class="row">
             <table class="table table-striped table-hover">
@@ -24,7 +27,14 @@
                         <th scope="col"></th>
                     </tr>
                 </thead>
-                <tbody>
+
+                <tbody th:if="${permisos.size() == 0}">
+                    <tr>
+                        <td colspan="3" class="text-center">No existen permisos</td>
+                    </tr>
+                </tbody>
+
+                <tbody th:if="${permisos.size() > 0}">
                     <div th:each="permiso : ${permisos}" class="col-3">
                         <tr>
                             <th scope="row" th:text="${permiso.codigo}">1</th>

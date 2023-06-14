@@ -24,7 +24,13 @@
                     </tr>
                 </thead>
 
-                <tbody>
+                <tbody th:if="${revisiones.size() == 0}">
+                    <tr>
+                        <td colspan="3" class="text-center">No existen revisiones</td>
+                    </tr>
+                </tbody>
+
+                <tbody th:if="${revisiones.size() > 0}">
                     <tr th:each="revision : ${revisiones}">
                         <th th:text="${revision.fecha}" scope="row">1</th>
                         <td th:text="${revision.descripcion}">Mark</td>

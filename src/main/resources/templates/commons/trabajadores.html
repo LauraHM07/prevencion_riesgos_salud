@@ -26,8 +26,14 @@
                             <th scope="col"></th>
                         </tr>
                     </thead>
+
+                    <tbody th:if="${trabajadores.size() == 0}">
+                        <tr>
+                            <td colspan="8" class="text-center">No existen trabajadores</td>
+                        </tr>
+                    </tbody>
     
-                    <tbody>
+                    <tbody th:if="${trabajadores.size() > 0}">
                         <tr th:each="trabajador : ${trabajadores}">
                             <th th:text="${trabajador.codigo}" scope="row">1</th>
                             <td th:text="${trabajador.nombre}">Mark</td>
