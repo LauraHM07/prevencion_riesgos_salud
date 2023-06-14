@@ -55,8 +55,6 @@ public class UsuarioService implements UserDetailsService {
     }
 
     public void update(Usuario usuario) {
-        usuario.setPassword(encoder.encode(usuario.getPassword()));
-        
         restTemplate.put(urlSeguridad + "usuarios/" + usuario.getCodigo(), usuario, Usuario.class);
     }
 
