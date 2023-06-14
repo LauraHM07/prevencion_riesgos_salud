@@ -3,6 +3,7 @@ package com.prevencion.prevencion.controllers;
 import java.io.IOException;
 import java.util.List;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,7 @@ import com.prevencion.prevencion.services.PermisoService;
 
 @Controller
 @RequestMapping("/permisos")
+@PreAuthorize("hasAnyAuthority('superUsuario')")
 public class PermisoController {
     
     @Autowired

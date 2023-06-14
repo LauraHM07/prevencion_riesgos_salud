@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <body>
     <div th:fragment="menu">
@@ -26,10 +27,10 @@
                         <li class="nav-item">
                             <a class="nav-link" th:href="@{/trabajadores/list}" href="#">Trabajadores</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item" sec:authorize="hasAuthority('superUsuario')">
                             <a class="nav-link" th:href="@{/usuarios/list}" href="#">Usuarios</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item" sec:authorize="hasAuthority('superUsuario')">
                             <a class="nav-link" th:href="@{/permisos/list}" href="#">Permisos</a>
                         </li>
                     </ul>
@@ -43,9 +44,9 @@
                 </div>
             </div>
 
-            <!-- <a class="btn btn-danger" href="index.html" th:href="@{/logout}">
+            <a class="btn btn-danger" href="index.html" th:href="@{/logout}">
                 <i class="bi bi-box-arrow-in-left" th:text="logout"></i></i>
-            </a> -->
+            </a>
         </nav>
 
         <br>

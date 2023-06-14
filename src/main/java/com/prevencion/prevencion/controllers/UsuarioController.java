@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,7 @@ import com.prevencion.prevencion.services.UsuarioService;
 
 @Controller
 @RequestMapping("/usuarios")
+@PreAuthorize("hasAnyAuthority('superUsuario')")
 public class UsuarioController {
 
     @Autowired
